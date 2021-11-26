@@ -1,12 +1,12 @@
 // To parse this JSON data, do
 //
-//     final contact = contactFromMap(jsonString);
+//     final contact = contactFromJson(jsonString);
 
 import 'dart:convert';
 
-Contact contactFromMap(String str) => Contact.fromMap(json.decode(str));
+Contact contactFromJson(String str) => Contact.fromJson(json.decode(str));
 
-String contactToMap(Contact data) => json.encode(data.toMap());
+String contactToJson(Contact data) => json.encode(data.toJson());
 
 class Contact {
     Contact({
@@ -23,7 +23,7 @@ class Contact {
     String country;
     String region;
 
-    factory Contact.fromMap(Map<String, dynamic> json) => Contact(
+    factory Contact.fromJson(Map<String, dynamic> json) => Contact(
         name: json["name"],
         phone: json["phone"],
         email: json["email"],
@@ -31,7 +31,7 @@ class Contact {
         region: json["region"],
     );
 
-    Map<String, dynamic> toMap() => {
+    Map<String, dynamic> toJson() => {
         "name": name,
         "phone": phone,
         "email": email,

@@ -1,9 +1,11 @@
-import 'dart:html';
+
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/contact_model.dart';
 
 class ContactView extends StatelessWidget {
-  const ContactView({Key? key}) : super(key: key);
+  const ContactView({Key? key, required this.contact}) : super(key: key);
+  final Contact contact;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +35,7 @@ class ContactView extends StatelessWidget {
           const SizedBox(height: 20),
           Center(
             child: Text(
-              'Kwaku Siaw',
+              contact.name,
               style: TextStyle(
                   fontSize: 25,
                   color: Colors.black,
@@ -42,7 +44,7 @@ class ContactView extends StatelessWidget {
           ),
           Center(
             child: Text(
-              'Accra Ghana',
+              '${contact.region},${contact.country}',
               style: TextStyle(fontSize: 20, color: Colors.black),
             ),
           ),
@@ -54,11 +56,11 @@ class ContactView extends StatelessWidget {
               child: Column(
                 children: [
                   ListTile(
-                      title: Text('mobile',
+                      title: Text('Mobile',
                           style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.w600)),
-                      subtitle: Text('+233273712181'),
+                      subtitle: Text(contact.phone),
                       trailing: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -92,7 +94,7 @@ class ContactView extends StatelessWidget {
                           style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.w600)),
-                      subtitle: Text('kwakusiawl73@gmail.com'),
+                      subtitle: Text(contact.email),
                       trailing: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -132,7 +134,8 @@ class ContactView extends StatelessWidget {
                           color: Colors.black, fontWeight: FontWeight.w600),
                     ),
                     trailing: Image.asset('assets/Telegram.png'),
-                  ),ListTile(
+                  ),
+                  ListTile(
                     title: Text(
                       'Whatsapp',
                       style: TextStyle(
@@ -140,9 +143,33 @@ class ContactView extends StatelessWidget {
                     ),
                     trailing: Image.asset('assets/whats.png.png'),
                   )
-
                 ],
-              ))
+              )),
+          const Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Text('More Options',
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18)),
+          ),
+          Container(
+              color: const Color(0xff9AADBE),
+              child: Column(children: [
+                ListTile(
+                  title: Text(
+                    'Share Contacts',
+                    style: TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.w600),
+                  ),
+                  
+                ),
+                ListTile(
+                  title: Text(
+                    'QR Code',
+                    style: TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.w600),
+                  ),
+                  
+                )
+              ]))
         ]));
   }
 }
